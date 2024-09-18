@@ -14,31 +14,63 @@
             background-attachment: fixed;
         }
         .card {
-            background: rgba(255, 255, 255, 0.1);
+            background: linear-gradient(135deg, rgba(255,255,255,0.7) 0%, rgba(255,255,255,0.3) 100%);
             backdrop-filter: blur(10px);
             box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-            border: 1px solid rgba(255, 255, 255, 0.2);
         }
         .section {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(5px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
-        .section:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
-        }
-        .expertise-item, .interest-tag {
-            background: rgba(255, 255, 255, 0.2);
+            background-color: rgba(255, 255, 255, 0.2);
             backdrop-filter: blur(5px);
             border: 1px solid rgba(255, 255, 255, 0.3);
             transition: all 0.3s ease;
         }
-        .expertise-item:hover, .interest-tag:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        .section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        .expertise-item, .interest-tag {
+            background-color: rgba(255, 255, 255, 0.3);
+            backdrop-filter: blur(5px);
+        }
+        .qr-code-container { 
+            background: linear-gradient(45deg, rgba(255,255,255,0.4), rgba(255,255,255,0.1));
+            backdrop-filter: blur(5px);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .qr-code-container:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+        @keyframes liquid { 
+            0% { transform: translate(-50%, -75%) rotate(0deg); }
+            50% { transform: translate(-50%, -50%) rotate(180deg); }
+            100% { transform: translate(-50%, -75%) rotate(360deg); }
+        }
+        .qr-liquid {
+            position: absolute;
+            top: 50%; left: 50%;
+            width: 200%; height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            animation: liquid 6s linear infinite;
+        }
+        .qr-label {
+            position: absolute;
+            bottom: -25px;
+            left: 0;
+            right: 0;
+            text-align: center;
+            color: #4a5568;
+            font-weight: bold;
+            transition: transform 0.3s ease;
+        }
+        .qr-code-container:hover .qr-label {
+            transform: translateY(-5px);
+        }
+        .chinese-quote {
+            font-family: 'Ma Shan Zheng', cursive;
+        }
+        .hat-color-text {
+            color: #0052A3; /* 深蓝色 */
         }
         .gradient-text {
             background: linear-gradient(45deg, #2196F3, #03A9F4);
@@ -57,9 +89,29 @@
         .lake-blue-text {
             color: #4D9DE0;
         }
-        /* 添加这个新的样式 */
-        .hat-color-text {
-            color: #213ce9; /* 深蓝色 */
+        .core-functions {
+            background-color: rgba(156, 39, 176, 0.1); /* 紫色 */
+        }
+        .feature-highlights {
+            background-color: rgba(0, 150, 136, 0.1); /* 青色背景 */
+        }
+        .feature-highlights h3 {
+            color: #00695C; /* 深青色 */
+        }
+        .feature-highlights ul {
+            color: #00796B; /* 中青色 */
+        }
+        .feature-highlights i {
+            color: #009688; /* 浅青色 */
+        }
+        .naohai-expertise {
+            background-color: rgba(255, 193, 7, 0.1); /* 琥珀色 */
+        }
+        .motto-section {
+            background-color: rgba(233, 30, 99, 0.1); /* 粉色 */
+        }
+        .qr-code-section {
+            background-color: rgba(63, 81, 181, 0.1); /* 靛蓝色 */
         }
     </style>
 </head>
@@ -89,7 +141,7 @@
                 </a>
             </div>
             
-            <div class="section rounded-xl p-4 mb-4 shadow-sm">
+            <div class="section core-functions rounded-xl p-4 mb-4 shadow-sm">
                 <h3 class="text-xl font-semibold text-purple-800 flex items-center mb-3">
                     <i class="fas fa-cogs mr-3 text-purple-600"></i>核心功能
                 </h3>
@@ -109,18 +161,18 @@
                 </div>
             </div>
 
-            <div class="section rounded-xl p-4 mb-4 shadow-sm">
-                <h3 class="text-xl font-semibold text-blue-800 flex items-center mb-3">
-                    <i class="fas fa-tags mr-3 text-blue-600"></i>功能亮点
+            <div class="section feature-highlights rounded-xl p-4 mb-4 shadow-sm">
+                <h3 class="text-xl font-semibold flex items-center mb-3">
+                    <i class="fas fa-tags mr-3"></i>功能亮点
                 </h3>
-                <ul class="text-blue-700 pl-6 list-none">
-                    <li class="mb-2"><i class="fas fa-check-circle mr-2 text-blue-500"></i>帮助员工精准快速解答人财法、行政、IT等各类问题</li>
-                    <li class="mb-2"><i class="fas fa-check-circle mr-2 text-blue-500"></i>帮助员工高效管理日常事务如流程查询、考勤查看和会议室预定等</li>
-                    <li><i class="fas fa-check-circle mr-2 text-blue-500"></i>同时具有创造力，可以协助撰写各种文案，快速生成海报、图片等</li>
+                <ul class="pl-6 list-none">
+                    <li class="mb-2"><i class="fas fa-check-circle mr-2"></i>帮助员工精准快速解答人财法、行政、IT等各类问题</li>
+                    <li class="mb-2"><i class="fas fa-check-circle mr-2"></i>帮助员工高效管理日常事务如流程查询、考勤查看和会议室预定等</li>
+                    <li><i class="fas fa-check-circle mr-2"></i>同时具有创造力，可以协助撰写各种文案，快速生成海报、图片等</li>
                 </ul>
             </div>
 
-            <div class="section rounded-xl p-4 mb-4 shadow-sm">
+            <div class="section naohai-expertise rounded-xl p-4 mb-4 shadow-sm">
                 <h3 class="text-xl font-semibold text-yellow-800 flex items-center mb-3">
                     <i class="fas fa-star mr-3 text-yellow-600"></i>闹海擅长
                 </h3>
@@ -144,12 +196,12 @@
             </div>
 
             <div class="flex justify-between items-center mb-6">
-                <div class="section rounded-xl p-4 flex-1 mr-4 flex items-center justify-center h-32">
+                <div class="section motto-section rounded-xl p-4 flex-1 mr-4 flex items-center justify-center h-32">
                     <p class="text-base italic lake-blue-text chinese-quote leading-tight text-center">
                         致力于能力进化和贴心的服务，让贝壳员工的工作更加轻松愉快。
                     </p>
                 </div>
-                <div class="section rounded-xl overflow-hidden flex justify-center items-center w-32 h-32">
+                <div class="section qr-code-section rounded-xl overflow-hidden flex justify-center items-center w-32 h-32">
                     <img src="https://api.qrserver.com/v1/create-qr-code/?size=128x128&data=https://is-prod.ke.com/pages/chat&color=00BCD4" alt="闹海门户 QR Code" class="w-24 h-24 rounded-lg z-10">
                     <div class="absolute inset-0 bg-cyan-900 opacity-20 mix-blend-color"></div>
                 </div>
